@@ -1,33 +1,22 @@
 $(function () {
     var vals = ['야간', '비번', '휴무', '연가']
-    // $('input').on('keydown', function () {
-    //     if (vals.indexOf($(this).val()) > -1) {
-    //         // 있다면, 3개가 모두 있는지 확인
-    //         console.log('keyup');
-    //         var thisid = $(this).attr('id');
-    //         var andid = '';
-    //         var lastid = '';
-    //         // console.log(thisclass)
-    //         // ㅣ열 == > [0] 사람  || ㅡ행 ==> ==[1]   일
-    //         var id_splited = thisid.split('_');
-    //         var id_person = id_splited[0];
-    //         var id_date = id_splited[1]
-            
-    //         var threeval = 0;
-    //         threeval = switch_it(id_date, id_person)
-    //         console.log('t_val : ' + threeval)
-    //         if (threeval) { make_temp(id_person); }
-    //     }
-    // })
+    
+    $('input').on('keyup', function() {
+        if ( $(this).val()== '야간' ) { $(this).addClass('night'); }
+        else if ( $(this).val()== '비번' ) { $(this).addClass('rest'); }
+        else if ( $(this).val()== '휴무' ) { $(this).addClass('sleep'); }
+        else {
+            $(this).removeClass('night');
+            $(this).removeClass('rest');
+            $(this).removeClass('sleep');
+        }
+    })
 
-    // $('input').keyup(function (e) { if (e.keyCode == 13) alert('Enter'); });
     $('input').keyup(function (e) { if (e.keyCode == 13) {
             if (vals.indexOf($(this).val()) > -1) {
                 // 있다면, 3개가 모두 있는지 확인
-                console.log('keyup');
                 var thisid = $(this).attr('id');
                 var thisval = $(this).val();
-                // console.log(thisclass)
                 // ㅣ열 == > [0] 사람  || ㅡ행 ==> ==[1]   일
                 var id_splited = thisid.split('_');
                 var id_person = id_splited[0];
@@ -93,22 +82,37 @@ function judge_val(v1, v2) {
 }
 
 function make_temp(ip, sr) {
-    var shift = ['야간1', '비번1', '야간2', '비번2', '휴무1', '휴무2'];
+    var shift = ['야간', '비번', '야간', '비번', '휴무', '휴무'];
+    var shiftc = ['night', 'rest', 'night', 'rest', 'sleep', 'sleep'];
     var startline = sr;
     var temp = '';
+    if ( !$('input#2_15').val() &&  $('input#2_15').val() !=='') {
+        for ( var j = 4; j < 32 ; j ++) {
+            var tem =  '<tr>\
+                            <td>'+j+'</td>\
+                            <td><input type="text" id="1_'+j+'">\
+                            <td><input type="text" id="2_'+j+'">\
+                            <td><input type="text" id="3_'+j+'">\
+                        </tr>';
+            temp += tem;
+        }
+        $('tbody').append(temp)
+    }
     for (var i=4; i<32;i++) {
         var num = startline % 6;
         console.log('======================')
         console.log(startline)
         console.log('======================')
-        var tem =  '<tr>\
-                        <td>'+i+'</td>\
-                        <td><input type="text" id="'+ip+'_'+i+'" value="'+shift[num]+'">\
-                    </tr>';
-        temp += tem;
+        // var tem =  '<tr>\
+        //                 <td><input type="text" id="'+ip+'_'+i+'" value="'+shift[num]+'">\
+        //             </tr>';
+        // temp += tem;
+        $('input#' + ip + '_' + i).val(shift[num]);
+        $('input#' + ip + '_' + i).addClass(shiftc[num])
         startline += 1;
     }
-    $('tbody').append(temp)
+
+    // colorize();
 }
 
 function logic_3rd( fi, se, th) {
@@ -160,3 +164,10 @@ function error_it() {
     alert('error!_!');
     return 0;
 }
+
+
+// function colorize() {
+//     if ( $('input').val() == '야간') { $(this).css('background-color', 'rgb(190, 78, 255)' )}
+//     else if ( $('input').val() == '비번') { $(this).css('background-color', 'rgb(200, 200, 200)' )}
+//     else if ( $('input').val() == '휴무') { $(this).css('background-color', '#fff' )}
+// }

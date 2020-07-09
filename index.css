@@ -17,6 +17,18 @@ table td {
     width: 217px;
     height: 50px;
 }
+
+table {
+    border-collapse: collapse;
+}
+table tbody td {
+    border: 1px solid #999;
+    padding: 0;
+}
+table tbody .ft td {
+    /* border: 1px solid coral; */
+    padding: 0;
+}
 table tr th:nth-child(1) {
     width: 10%;
 }
@@ -24,25 +36,68 @@ table tr td:nth-child(1) {
     width: 10%;
     padding-left: 10px;
 }
-table {
-    border-collapse: collapse;
+
+/* 가장 위에 테이블 가장 겉 부분만 주황색으로 만드는 코드 */
+.ft:nth-child(1) td:nth-child(1) {
+    border-top: 1px solid coral;
+    border-left: 1px solid coral;
 }
-table tbody td {
-    border: 1px solid #999;
+.ft:nth-child(1) td:nth-child(2) {
+    border-top: 1px solid coral;
 }
-table tbody .ft td {
-    border: 1px solid coral;
+.ft:nth-child(1) td:nth-child(3) {
+    border-top: 1px solid coral;
 }
+.ft:nth-child(1) td:nth-child(4) {
+    border-top: 1px solid coral;
+    border-right: 1px solid coral;
+}
+.ft:nth-child(2) td:nth-child(1) {
+    border-top: 1px solid coral;
+    border-left: 1px solid coral;
+}
+.ft:nth-child(2) td:nth-child(4) {
+    border-top: 1px solid coral;
+    border-right: 1px solid coral;
+}
+.ft:nth-child(3) td:nth-child(1) {
+    border-bottom: 1px solid coral;
+    border-left: 1px solid coral;
+}
+.ft:nth-child(3) td:nth-child(2) {
+    border-bottom: 1px solid coral;
+}
+.ft:nth-child(3) td:nth-child(3) {
+    border-bottom: 1px solid coral;
+}
+.ft:nth-child(3) td:nth-child(4) {
+    border-bottom: 1px solid coral;
+    border-right: 1px solid coral;
+}
+/* ==여기까지== 가장 위에 테이블 가장 겉 부분만 주황색으로 만드는 코드 */
 
 
 /* Input Style */
 table input {
-    width: 237px;
+    width: 240px;
     height: 70px;
     border: 0;
     font-size: 21px;
     text-align: center;
+    padding:0;
 }
 td:has(input) {
     padding: 0;
+}
+
+input.night {
+    background-color: rgb(167, 15, 255);
+    color: #fff;
+}
+input.rest {
+    background-color: rgb(119, 119, 119);
+    color: #fff;
+}
+input.sleep {
+    background-color: #fff;
 }
