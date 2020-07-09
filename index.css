@@ -1,0 +1,48 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* table Basic set */
+table {
+    width: 800px;
+    margin: 50px auto;
+    font-size: 19px;
+}
+table th {
+    width: 217px;
+    height: 50px;
+    padding: 10px;
+}
+table td {
+    width: 217px;
+    height: 50px;
+}
+table tr th:nth-child(1) {
+    width: 10%;
+}
+table tr td:nth-child(1) {
+    width: 10%;
+    padding-left: 10px;
+}
+table {
+    border-collapse: collapse;
+}
+table tbody td {
+    border: 1px solid #999;
+}
+table tbody .ft td {
+    border: 1px solid coral;
+}
+
+
+/* Input Style */
+table input {
+    width: 237px;
+    height: 70px;
+    border: 0;
+    font-size: 21px;
+    text-align: center;
+}
+td:has(input) {
+    padding: 0;
+}
